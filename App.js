@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, Text, View, ImageBackground, TouchableOpacity , Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
@@ -35,15 +36,45 @@ export default function App() {
       style={styles.background}
       resizeMode="cover"
     >
-      <View style={styles.textContainer}>
+      <LinearGradient
+        colors={['transparent', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 1)']}
+        style={styles.gradient}
+      >
+      <View style={styles.textContainer}> 
         <View style={styles.content}>
-          <Text style={styles.textBlack}>Welcome to</Text>
-          <Text style={styles.textWhite}>DELIVERY</Text>
-          <Text style={styles.textWhite}>HUB</Text>
-          <Text style={styles.description}>Your favourite foods in less than 30 minutes!</Text>
-          <StatusBar style="auto" />
+          <Text style={styles.textBlack}>
+            Welcome to
+          </Text>
+          <Text style={styles.textWhite}>
+            DELIVERY
+          </Text>
+          <Text style={styles.textWhite}>
+            HUB
+          </Text>
+          <Text style={styles.description}>
+            Your favourite foods in less than 30 minutes!
+          </Text>
+        <StatusBar style="auto" />
         </View>
+        <View style={styles.signIn}>
+          <Text>sign in with</Text>
+        </View>
+          <View style={styles.ButtonContainer}>
+            <TouchableOpacity
+              style={styles.buttonFacebook}
+              >
+              <Text style={styles.buttonText}>
+                FACEBOOK
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.buttonGoogle}
+              >
+                <Text>GOOGLE</Text>
+            </TouchableOpacity>
+          </View>
       </View>
+      </LinearGradient>
     </ImageBackground>
   );
 }
@@ -53,6 +84,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  gradient: {
+    ...StyleSheet.absoluteFillObject,
   },
   textContainer: {
     flex: 1,
@@ -93,5 +127,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+  // Button Styles
+  ButtonContainer:{
+    flexDirection: 'row', // Place children side by side
+    justifyContent: 'space-between', // Add space between buttons
+    alignItems: 'center', // Align items vertically in the center
+    marginTop: 10, // Add some margin at the top
+    paddingHorizontal: 10, // Add horizontal padding
+  },
+  buttonFacebook : {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    marginRight: 15,
+    width: 100,
+  },
+  buttonGoogle : {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    width: 100,
   },
 });

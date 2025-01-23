@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity , Image } from 'react-native';
+import { Text, View, ImageBackground, TouchableOpacity , Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import welcomeStyles from './styles/welcomePage.js';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -24,7 +25,7 @@ export default function App() {
 
   if (!fontsLoaded) {
     return (
-      <View style={styles.loadingContainer}>
+      <View style={welcomeStyles.loadingContainer}>
         <Text>Loading Fonts...</Text>
       </View>
     ); // Show a loading screen if fonts are not yet loaded
@@ -33,41 +34,41 @@ export default function App() {
   return (
     <ImageBackground
       source={require('./assets/bg.png')}
-      style={styles.background}
+      style={welcomeStyles.background}
       resizeMode="cover">
       
       <LinearGradient
         colors={['transparent', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 1)']}
-        style={styles.gradient}>
+        style={welcomeStyles.gradient}>
 
-        <View style={styles.textContainer}> 
-          <View style={styles.content}>
-            <Text style={styles.textBlack}> Welcome to </Text>
-            <Text style={styles.textWhite}> DELIVERY </Text>
-            <Text style={styles.textWhite}> HUB </Text>
-            <Text style={styles.description}> Your favourite foods in less than 30 minutes! </Text>
+        <View style={welcomeStyles.textContainer}> 
+          <View style={welcomeStyles.content}>
+            <Text style={welcomeStyles.textBlack}> Welcome to </Text>
+            <Text style={welcomeStyles.textWhite}> DELIVERY </Text>
+            <Text style={welcomeStyles.textWhite}> HUB </Text>
+            <Text style={welcomeStyles.description}> Your favourite foods in less than 30 minutes! </Text>
           </View>
         </View>
 
-          <View style={styles.signIn}>
+          <View style={welcomeStyles.signIn}>
             <Text>sign in with</Text>
           </View>
       
           {/* Buttons Container */}
-          <View style={styles.ButtonContainer}>
+          <View style={welcomeStyles.ButtonContainer}>
           {/* Facebook button */}
-            <TouchableOpacity style={styles.buttonFacebook}>
+            <TouchableOpacity style={welcomeStyles.buttonFacebook}>
               <Image
-                source={require('./assets/bg.png')}
-                style={styles.facebookIcon}>
+                source={require('./assets/icons/facebookIcon.svg')}
+                style={welcomeStyles.facebookIcon}>
               </Image>
-              <Text style={styles.buttonText}> FACEBOOK </Text>
+              <Text style={welcomeStyles.buttonText}> FACEBOOK </Text>
             </TouchableOpacity>
           {/* Google button */} 
-            <TouchableOpacity style={styles.buttonGoogle}>
+            <TouchableOpacity style={welcomeStyles.buttonGoogle}>
               <Image 
-                source={require('./assets/bg.png')}
-                style={styles.GoogleIcon}>
+                source={require('./assets/icons/googleIcon.svg')}
+                style={welcomeStyles.GoogleIcon}>
               </Image>
               <Text> GOOGLE </Text>
             </TouchableOpacity>
@@ -79,88 +80,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  gradient: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  textContainer: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginTop: 200,
-  },
-  content: {
-    width: 'auto',
-    padding: 20,
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  textBlack: {
-    fontSize: 55,
-    fontWeight: 'bold',
-    fontFamily: 'CustomFont', // Apply custom font
-    textShadowColor: 'rgba(61, 61, 61, 0.65)',
-    textShadowOffset: { height: 6 },
-    textShadowRadius: 7,
-  },
-  textWhite: {
-    color: 'white',
-    fontSize: 47,
-    fontWeight: 'bold',
-    fontFamily: 'CustomFont', // Apply custom font
-    textShadowColor: 'rgba(61, 61, 61, 0.65)',
-    textShadowOffset: { height: 6 },
-    textShadowRadius: 7,
-  },
-  description: {
-    marginTop: 15,
-    fontSize: 16,
-    color: 'white',
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  signIn: {
-    marginTop: 20,
-    alignItems: 'center',
-  },
-  ButtonContainer: {
-    flexDirection: 'row', // Place children side by side
-    justifyContent: 'space-between', // Add space between buttons
-    alignItems: 'center', // Align items vertically in the center
-    marginTop: 10, // Add some margin at the top
-    paddingHorizontal: 10, // Add horizontal padding
-  },
-  buttonFacebook: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5,
-    marginRight: 10, // Add some margin between buttons
-    flexDirection: 'row', // Align image and text side by side
-    alignItems: 'center', // Center the content vertically
-  },
-  buttonGoogle: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5,
-    flexDirection: 'row', // Align image and text side by side
-    alignItems: 'center', // Center the content vertically
-  },
-  buttonImage: {
-    width: 20,
-    height: 20,
-    marginRight: 10, // Add some margin between image and text
-  },
-  buttonText: {
-    color: 'black',
-    fontSize: 16,
-  },
-});

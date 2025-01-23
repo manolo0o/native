@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity , Alert } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TouchableOpacity , Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
@@ -34,47 +34,47 @@ export default function App() {
     <ImageBackground
       source={require('./assets/bg.png')}
       style={styles.background}
-      resizeMode="cover"
-    >
+      resizeMode="cover">
+      
       <LinearGradient
         colors={['transparent', 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 1)']}
-        style={styles.gradient}
-      >
-      <View style={styles.textContainer}> 
-        <View style={styles.content}>
-          <Text style={styles.textBlack}>
-            Welcome to
-          </Text>
-          <Text style={styles.textWhite}>
-            DELIVERY
-          </Text>
-          <Text style={styles.textWhite}>
-            HUB
-          </Text>
-          <Text style={styles.description}>
-            Your favourite foods in less than 30 minutes!
-          </Text>
-        <StatusBar style="auto" />
+        style={styles.gradient}>
+
+        <View style={styles.textContainer}> 
+          <View style={styles.content}>
+            <Text style={styles.textBlack}> Welcome to </Text>
+            <Text style={styles.textWhite}> DELIVERY </Text>
+            <Text style={styles.textWhite}> HUB </Text>
+            <Text style={styles.description}> Your favourite foods in less than 30 minutes! </Text>
+          </View>
         </View>
-        <View style={styles.signIn}>
-          <Text>sign in with</Text>
-        </View>
+
+          <View style={styles.signIn}>
+            <Text>sign in with</Text>
+          </View>
+      
+          {/* Buttons Container */}
           <View style={styles.ButtonContainer}>
-            <TouchableOpacity
-              style={styles.buttonFacebook}
-              >
-              <Text style={styles.buttonText}>
-                FACEBOOK
-              </Text>
+          {/* Facebook button */}
+            <TouchableOpacity style={styles.buttonFacebook}>
+              <Image
+                source={require('./assets/bg.png')}
+                style={styles.facebookIcon}>
+              </Image>
+              <Text style={styles.buttonText}> FACEBOOK </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.buttonGoogle}
-              >
-                <Text>GOOGLE</Text>
+          {/* Google button */} 
+            <TouchableOpacity style={styles.buttonGoogle}>
+              <Image 
+                source={require('./assets/bg.png')}
+                style={styles.GoogleIcon}>
+              </Image>
+              <Text> GOOGLE </Text>
             </TouchableOpacity>
           </View>
-      </View>
+
       </LinearGradient>
+      <StatusBar style="auto" />
     </ImageBackground>
   );
 }
@@ -128,27 +128,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  // Button Styles
-  ButtonContainer:{
+  signIn: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  ButtonContainer: {
     flexDirection: 'row', // Place children side by side
     justifyContent: 'space-between', // Add space between buttons
     alignItems: 'center', // Align items vertically in the center
     marginTop: 10, // Add some margin at the top
     paddingHorizontal: 10, // Add horizontal padding
   },
-  buttonFacebook : {
+  buttonFacebook: {
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 5,
-    marginTop: 10,
-    marginRight: 15,
-    width: 100,
+    marginRight: 10, // Add some margin between buttons
+    flexDirection: 'row', // Align image and text side by side
+    alignItems: 'center', // Center the content vertically
   },
-  buttonGoogle : {
+  buttonGoogle: {
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 5,
-    marginTop: 10,
-    width: 100,
+    flexDirection: 'row', // Align image and text side by side
+    alignItems: 'center', // Center the content vertically
+  },
+  buttonImage: {
+    width: 20,
+    height: 20,
+    marginRight: 10, // Add some margin between image and text
+  },
+  buttonText: {
+    color: 'black',
+    fontSize: 16,
   },
 });

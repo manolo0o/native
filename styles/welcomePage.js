@@ -16,12 +16,6 @@ const welcomeStyles = StyleSheet.create({
       alignItems: 'center',
       marginTop: 200,
     },
-    content: {
-      width: 'auto',
-      padding: 20,
-      borderRadius: 10,
-      alignItems: 'center',
-    },
     textBlack: {
       fontSize: 55,
       fontWeight: 'bold',
@@ -55,39 +49,39 @@ const welcomeStyles = StyleSheet.create({
       alignItems: 'center',
     },
     ButtonContainer: {
+      flex: 1,
       flexDirection: 'row', // Place children side by side
-      justifyContent: 'space-between', // Add space between buttons
-      alignItems: 'center', // Align items vertically in the center
+      justifyContent: 'space-around', // Add space between buttons
+      alignItems: 'flex-start' , 
       marginTop: 10, // Add some margin at the top
       paddingHorizontal: 10, // Add horizontal padding
     },
     buttonFacebook: {
       backgroundColor: 'white',
-      padding: 10,
-      borderRadius: 5,
-      marginRight: 10, // Add some margin between buttons
+      padding: 15,
+      borderRadius: 20,
       flexDirection: 'row', // Align image and text side by side
       alignItems: 'center', // Center the content vertically
     },
     buttonGoogle: {
       backgroundColor: 'white',
-      padding: 10,
-      borderRadius: 5,
+      padding: 15,
+      borderRadius: 20,
       flexDirection: 'row', // Align image and text side by side
       alignItems: 'center', // Center the content vertically
-    },
-    buttonImage: {
-      width: 20,
-      height: 20,
-      marginRight: 10, // Add some margin between image and text
     },
     buttonText: {
       color: 'black',
       fontSize: 16,
     },
     facebookIcon: {
-      width: 20,
-      height: 20,
+      width: 30,
+      height: 30,
+      marginRight: 10,
+    },
+    googleIcon: {
+      width: 30,
+      height: 30,
       marginRight: 10,
     },
   

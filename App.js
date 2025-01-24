@@ -42,12 +42,10 @@ export default function App() {
         style={welcomeStyles.gradient}>
 
         <View style={welcomeStyles.textContainer}> 
-          <View style={welcomeStyles.content}>
             <Text style={welcomeStyles.textBlack}> Welcome to </Text>
             <Text style={welcomeStyles.textWhite}> DELIVERY </Text>
             <Text style={welcomeStyles.textWhite}> HUB </Text>
             <Text style={welcomeStyles.description}> Your favourite foods in less than 30 minutes! </Text>
-          </View>
         </View>
 
           <View style={welcomeStyles.signIn}>
@@ -59,7 +57,7 @@ export default function App() {
           {/* Facebook button */}
             <TouchableOpacity style={welcomeStyles.buttonFacebook}>
               <Image
-                source={require('./assets/icons/facebookIcon.svg')}
+                source={require('./assets/icons/facebookIcon.png')}
                 style={welcomeStyles.facebookIcon}>
               </Image>
               <Text style={welcomeStyles.buttonText}> FACEBOOK </Text>
@@ -67,10 +65,10 @@ export default function App() {
           {/* Google button */} 
             <TouchableOpacity style={welcomeStyles.buttonGoogle}>
               <Image 
-                source={require('./assets/icons/googleIcon.svg')}
-                style={welcomeStyles.GoogleIcon}>
+                source={require('./assets/icons/googleIcon.png')}
+                style={welcomeStyles.googleIcon}>
               </Image>
-              <Text> GOOGLE </Text>
+              <Text style={welcomeStyles.buttonText}> GOOGLE </Text>
             </TouchableOpacity>
           </View>
 

@@ -18,8 +18,8 @@ Make sure you have the following installed:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/your-username/delivery-hub.git
-   cd delivery-hub
+   git clone https://github.com/manolo0o/native
+   cd native
 2. Install the dependencies:
 
     ```sh

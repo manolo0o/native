@@ -49,7 +49,7 @@ export default function App() {
         </View>
 
           <View style={welcomeStyles.signIn}>
-            <Text>sign in with</Text>
+            <Text style={welcomeStyles.signInText} >sign in with</Text>
           </View>
       
           {/* Buttons Container */}
@@ -70,6 +70,10 @@ export default function App() {
               </Image>
               <Text style={welcomeStyles.buttonText}> GOOGLE </Text>
             </TouchableOpacity>
+            <TouchableOpacity>
+              <Text>Start with email or phone</Text>
+            </TouchableOpacity>
+            <Text>Already have an account? Sign In</Text>
           </View>
 
       </LinearGradient>

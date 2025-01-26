@@ -47,6 +47,11 @@ const welcomeStyles = StyleSheet.create({
     signIn: {
       marginTop: 20,
       alignItems: 'center',
+      marginBottom: 10,
+    },
+    signInText:{
+      color: 'white',
+      fontSize: 15,
     },
     ButtonContainer: {
       flex: 1,
@@ -57,16 +62,18 @@ const welcomeStyles = StyleSheet.create({
       paddingHorizontal: 10, // Add horizontal padding
     },
     buttonFacebook: {
+      width: 150,
       backgroundColor: 'white',
       padding: 15,
-      borderRadius: 20,
+      borderRadius: 30,
       flexDirection: 'row', // Align image and text side by side
       alignItems: 'center', // Center the content vertically
     },
     buttonGoogle: {
+      width: 150,
       backgroundColor: 'white',
       padding: 15,
-      borderRadius: 20,
+      borderRadius: 30,
       flexDirection: 'row', // Align image and text side by side
       alignItems: 'center', // Center the content vertically
     },
@@ -77,14 +84,13 @@ const welcomeStyles = StyleSheet.create({
     facebookIcon: {
       width: 30,
       height: 30,
-      marginRight: 10,
+      marginRight: 5,
     },
     googleIcon: {
       width: 30,
       height: 30,
-      marginRight: 10,
+      marginRight: 8,
     },
-  
   });
 
   export default welcomeStyles;

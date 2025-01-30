@@ -44,10 +44,13 @@ const welcomeStyles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: 'white',
     },
+    ColumContainer: {
+      flex: 1,
+    },
     signIn: {
       marginTop: 20,
       alignItems: 'center',
-      marginBottom: 10,
+      marginBottom: 20,
     },
     signInText:{
       color: 'white',
@@ -58,7 +61,6 @@ const welcomeStyles = StyleSheet.create({
       flexDirection: 'row', // Place children side by side
       justifyContent: 'space-around', // Add space between buttons
       alignItems: 'flex-start' , 
-      marginTop: 10, // Add some margin at the top
       paddingHorizontal: 10, // Add horizontal padding
     },
     buttonFacebook: {
@@ -68,6 +70,8 @@ const welcomeStyles = StyleSheet.create({
       borderRadius: 30,
       flexDirection: 'row', // Align image and text side by side
       alignItems: 'center', // Center the content vertically
+      elevation: 10,
+      shadowColor: 'rgb(255, 255, 255)',
     },
     buttonGoogle: {
       width: 150,
@@ -76,6 +80,8 @@ const welcomeStyles = StyleSheet.create({
       borderRadius: 30,
       flexDirection: 'row', // Align image and text side by side
       alignItems: 'center', // Center the content vertically
+      elevation: 10,
+      shadowColor: 'rgb(255, 255, 255)',
     },
     buttonText: {
       color: 'black',
@@ -90,6 +96,28 @@ const welcomeStyles = StyleSheet.create({
       width: 30,
       height: 30,
       marginRight: 8,
+    },
+    StartContainer: {
+      flex: 1,
+      alignItems: 'center',
+    },
+    startButton:{
+      width: 330,
+      alignItems: 'center',
+      backgroundColor: 'rgba(255, 255, 255, 0.43)',
+      padding: 18,
+      borderRadius: 30,
+      borderColor: 'white', // Add border color
+      borderWidth: 1, // Add border width
+    },
+    startTextButton: {
+      color: 'white',
+      fontSize: 16,
+    },
+    startText: {
+      color: 'white',
+      fontSize: 14,
+      marginTop: 15,
     },
   });
 

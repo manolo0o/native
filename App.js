@@ -47,6 +47,7 @@ export default function App() {
             <Text style={welcomeStyles.textWhite}> HUB </Text>
             <Text style={welcomeStyles.description}> Your favourite foods in less than 30 minutes! </Text>
         </View>
+        <View style={welcomeStyles.ColumContainer}>
 
           <View style={welcomeStyles.signIn}>
             <Text style={welcomeStyles.signInText} >sign in with</Text>
@@ -70,12 +71,16 @@ export default function App() {
               </Image>
               <Text style={welcomeStyles.buttonText}> GOOGLE </Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text>Start with email or phone</Text>
-            </TouchableOpacity>
-            <Text>Already have an account? Sign In</Text>
           </View>
 
+          <View style={welcomeStyles.StartContainer}>
+            <TouchableOpacity style={welcomeStyles.startButton}>
+              <Text style={welcomeStyles.startTextButton}>Start with email or phone</Text>
+            </TouchableOpacity>
+            <Text style={welcomeStyles.startText}>Already have an account? Sign In</Text>
+          </View>
+
+        </View>
       </LinearGradient>
       <StatusBar style="auto" />
     </ImageBackground>

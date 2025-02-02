@@ -77,7 +77,9 @@ export default function App() {
             <TouchableOpacity style={welcomeStyles.startButton}>
               <Text style={welcomeStyles.startTextButton}>Start with email or phone</Text>
             </TouchableOpacity>
-            <Text style={welcomeStyles.startText}>Already have an account? Sign In</Text>
+            <Text style={welcomeStyles.startText}>
+              Already have an account? <Text style={welcomeStyles.highlight}>Sign In</Text>
+            </Text>  
           </View>
 
         </View>

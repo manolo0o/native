@@ -119,6 +119,10 @@ const welcomeStyles = StyleSheet.create({
       fontSize: 14,
       marginTop: 15,
     },
+    highlight: {
+      fontWeight: 'bold',
+      textDecorationLine: 'underline',
+    },
   });
 
   export default welcomeStyles;

@@ -2,9 +2,19 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import { useFonts , Montserrat_700Bold, Montserrat_400Regular, Montserrat_600SemiBold,  } from '@expo-google-fonts/montserrat';
 import welcomeStyles from '../styles/welcomeStyles.js';
 
 export default function WelcomeScreen({ navigation }) {
+    let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_700Bold,
+    Montserrat_600SemiBold
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <ImageBackground
@@ -53,11 +63,10 @@ export default function WelcomeScreen({ navigation }) {
               <Text style={welcomeStyles.startTextButton}>Start with email or phone</Text>
             </TouchableOpacity>
             <Text style={welcomeStyles.startText}>
-              Already have an account? 
-              <Text 
+              Already have an account?  <Text 
                 style={welcomeStyles.highlight}
                 onPress={() => navigation.navigate('SignIn')}
-                > Sign In
+                >Sign In
               </Text>
             </Text>  
           </View>

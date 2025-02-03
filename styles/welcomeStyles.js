@@ -18,8 +18,7 @@ const welcomeStyles = StyleSheet.create({
     },
     textBlack: {
       fontSize: 55,
-      fontWeight: 'bold',
-      fontFamily: 'CustomFont', // Apply custom font
+      fontFamily: 'Montserrat_700Bold',
       textShadowColor: 'rgba(61, 61, 61, 0.65)',
       textShadowOffset: { height: 6 },
       textShadowRadius: 7,
@@ -27,8 +26,7 @@ const welcomeStyles = StyleSheet.create({
     textWhite: {
       color: 'white',
       fontSize: 47,
-      fontWeight: 'bold',
-      fontFamily: 'CustomFont', // Apply custom font
+      fontFamily: 'Montserrat_700Bold', 
       textShadowColor: 'rgba(61, 61, 61, 0.65)',
       textShadowOffset: { height: 6 },
       textShadowRadius: 7,
@@ -37,6 +35,7 @@ const welcomeStyles = StyleSheet.create({
       marginTop: 15,
       fontSize: 16,
       color: 'white',
+      fontFamily: 'Montserrat_400Regular', 
     },
     loadingContainer: {
       flex: 1,
@@ -55,6 +54,7 @@ const welcomeStyles = StyleSheet.create({
     signInText:{
       color: 'white',
       fontSize: 15,
+      fontFamily: 'Montserrat_400Regular', 
     },
     ButtonContainer: {
       flex: 1,
@@ -86,6 +86,7 @@ const welcomeStyles = StyleSheet.create({
     buttonText: {
       color: 'black',
       fontSize: 16,
+      fontFamily: 'Montserrat_600SemiBold',
     },
     facebookIcon: {
       width: 30,
@@ -113,14 +114,16 @@ const welcomeStyles = StyleSheet.create({
     startTextButton: {
       color: 'white',
       fontSize: 16,
+      fontFamily: 'Montserrat_600SemiBold',
     },
     startText: {
       color: 'white',
       fontSize: 14,
       marginTop: 15,
+      fontFamily: 'Montserrat_400Regular',
     },
     highlight: {
-      fontWeight: 'bold',
+      fontFamily: 'Montserrat_600SemiBold',
       textDecorationLine: 'underline',
     },
   });

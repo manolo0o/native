@@ -17,7 +17,7 @@ const welcomeStyles = StyleSheet.create({
       marginTop: 200,
     },
     textBlack: {
-      fontSize: 55,
+      fontSize: 50,
       fontFamily: 'Montserrat_700Bold',
       textShadowColor: 'rgba(61, 61, 61, 0.65)',
       textShadowOffset: { height: 6 },
@@ -25,15 +25,15 @@ const welcomeStyles = StyleSheet.create({
     },
     textWhite: {
       color: 'white',
-      fontSize: 47,
+      fontSize: 43,
       fontFamily: 'Montserrat_700Bold', 
       textShadowColor: 'rgba(61, 61, 61, 0.65)',
       textShadowOffset: { height: 6 },
       textShadowRadius: 7,
     },
     description: {
-      marginTop: 15,
-      fontSize: 16,
+      marginTop: 17,
+      fontSize: 14.5,
       color: 'white',
       fontFamily: 'Montserrat_400Regular', 
     },
@@ -51,13 +51,24 @@ const welcomeStyles = StyleSheet.create({
       alignItems: 'center',
       marginBottom: 20,
     },
+    signInContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    line: {
+      borderBottomColor: 'white',
+      borderBottomWidth: 1,
+      width: 90,
+      marginHorizontal: 13,
+      opacity: 0.5, 
+    },
     signInText:{
       color: 'white',
       fontSize: 15,
       fontFamily: 'Montserrat_400Regular', 
     },
     ButtonContainer: {
-      flex: 1,
       flexDirection: 'row', // Place children side by side
       justifyContent: 'space-around', // Add space between buttons
       alignItems: 'flex-start' , 
@@ -85,7 +96,7 @@ const welcomeStyles = StyleSheet.create({
     },
     buttonText: {
       color: 'black',
-      fontSize: 16,
+      fontSize: 13.5,
       fontFamily: 'Montserrat_600SemiBold',
     },
     facebookIcon: {
@@ -99,6 +110,7 @@ const welcomeStyles = StyleSheet.create({
       marginRight: 8,
     },
     StartContainer: {
+      marginTop: 25,      
       flex: 1,
       alignItems: 'center',
     },

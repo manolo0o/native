@@ -12,6 +12,13 @@ export default function SignInScreen() {
         <View style={signInStyles.overlay} />
         <View style={signInStyles.container}>
           <Text>Sign In Screen</Text>
+          <TextInput
+            style={signInStyles.input}
+            placeholder="Username"
+            placeholderTextColor="#FFFFFF"
+          >
+            
+          </TextInput>
         </View>
       </ImageBackground>
     );

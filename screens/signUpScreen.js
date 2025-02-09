@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import { Text, View, ImageBackground, TextInput } from 'react-native';
 import signUpStyles from '../styles/signUpStyles.js';
 
 const SignUpScreen = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import { Text, View, ImageBackground, TextInput} from 'react-native';
 import signInStyles from '../styles/signInStyles.js';
 
 export default function SignInScreen() {
@@ -11,14 +11,24 @@ export default function SignInScreen() {
       >
         <View style={signInStyles.overlay} />
         <View style={signInStyles.container}>
-          <Text>Sign In Screen</Text>
+          <Text>Login</Text>
+          
+          <Text>E-mail</Text>
           <TextInput
             style={signInStyles.input}
-            placeholder="Username"
+            placeholder="Email"
             placeholderTextColor="#FFFFFF"
           >
-            
           </TextInput>
+
+          <Text>Password</Text>
+          <TextInput
+            style={signInStyles.input}
+            placeholder="Password"
+            placeholderTextColor="#FFFFFF"
+            >
+          </TextInput>
+            
         </View>
       </ImageBackground>
     );

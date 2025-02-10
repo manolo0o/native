@@ -1,8 +1,13 @@
-import React from 'react';
-import { Text, View, ImageBackground, TextInput} from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, ImageBackground, TextInput, Pressable} from 'react-native';
 import signInStyles from '../styles/signInStyles.js';
 
 export default function SignInScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
     return (
       <ImageBackground
         source={require('../assets/Rectangle 4170.png')}
@@ -10,25 +15,36 @@ export default function SignInScreen() {
         resizeMode="cover"
       >
         <View style={signInStyles.overlay} />
-        <View style={signInStyles.container}>
-          <Text>Login</Text>
+        <View style={signInStyles.containerLogin}>
+          <Text style={signInStyles.title}>Login</Text>
           
-          <Text>E-mail</Text>
+          {!email && <Text style={signInStyles.inputReference}>E-mail</Text>}
           <TextInput
-            style={signInStyles.input}
-            placeholder="Email"
-            placeholderTextColor="#FFFFFF"
+            style={[
+              signInStyles.input,
+              isEmailFocused && signInStyles.inputFocused,
+            ]}
+            value={email}
+            onChangeText={setEmail}
+            onFocus={() => setIsEmailFocused(true)}
+            onBlur={() => setIsEmailFocused(false)}
           >
           </TextInput>
 
-          <Text>Password</Text>
+          {!password && <Text style={signInStyles.inputReference}>Password</Text>}
           <TextInput
-            style={signInStyles.input}
-            placeholder="Password"
-            placeholderTextColor="#FFFFFF"
-            >
+            style={[
+              signInStyles.input,
+              isPasswordFocused && signInStyles.inputFocused,
+            ]}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            onFocus={() => setIsPasswordFocused(true)}
+            onBlur={() => setIsPasswordFocused(false)}
+          >
           </TextInput>
-            
+          
         </View>
       </ImageBackground>
     );

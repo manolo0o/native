@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, ImageBackground, TextInput, Pressable} from 'react-native';
+import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import signInStyles from '../styles/signInStyles.js';
 
 export default function SignInScreen() {
@@ -44,7 +44,11 @@ export default function SignInScreen() {
             onBlur={() => setIsPasswordFocused(false)}
           >
           </TextInput>
-          
+          <TouchableOpacity style={signInStyles.loginButton}> 
+            <Text style={signInStyles.loginButtonText}> 
+              Login
+            </Text>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     );

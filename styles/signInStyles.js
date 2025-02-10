@@ -42,7 +42,19 @@ const signInStyles = StyleSheet.create({
       borderColor: 'gray', // Change border color when focused
       borderWidth: 1,
     },
-
+    loginButton: {
+      width: '100%',
+      height: 60,
+      backgroundColor: 'black',
+      borderRadius: 12,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    loginButtonText: {
+      color: 'white',
+      fontFamily: 'Montserrat_700Bold',
+      fontSize: 20,
+    },
 });
 
 export default signInStyles;

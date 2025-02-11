@@ -20,7 +20,7 @@ const signInStyles = StyleSheet.create({
       fontSize: 40,
       color: 'Black',
       fontFamily: 'Montserrat_700Bold',
-      marginBottom: 20,
+      marginBottom: 35,
     },
     inputReference:{
       color: 'Black',
@@ -39,21 +39,40 @@ const signInStyles = StyleSheet.create({
       backgroundColor: 'white',
     },
     inputFocused: {
-      borderColor: 'gray', // Change border color when focused
+      borderColor: '#FE8000', // Change border color when focused
       borderWidth: 1,
     },
     loginButton: {
-      width: '100%',
+      width: '80%',
       height: 60,
-      backgroundColor: 'black',
-      borderRadius: 12,
+      backgroundColor: '#FE8000',
+      borderRadius: 30,
       justifyContent: 'center',
       alignItems: 'center',
+      marginBottom: 35,
     },
     loginButtonText: {
       color: 'white',
-      fontFamily: 'Montserrat_700Bold',
+      fontFamily: 'Montserrat_400Regular',
       fontSize: 20,
+    },
+    ButtonContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 20,
+    },
+    forgtPwd : {
+      color: '#FE8000',
+      fontFamily: 'Montserrat_400Regular',
+      marginBottom: 40,
+    },
+    signUp: {
+      color: 'Black',
+      fontFamily: 'Montserrat_400Regular',
+    },
+    signUpOrange: {
+      color: '#FE8000',
+      fontFamily: 'Montserrat_400Regular',
     },
 });
 

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,  } from 'react';
 import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import signInStyles from '../styles/signInStyles.js';
 
-export default function SignInScreen() {
+export default function SignInScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -44,11 +44,25 @@ export default function SignInScreen() {
             onBlur={() => setIsPasswordFocused(false)}
           >
           </TextInput>
-          <TouchableOpacity style={signInStyles.loginButton}> 
-            <Text style={signInStyles.loginButtonText}> 
-              Login
+          
+          <View style={signInStyles.ButtonContainer}>
+            <Text style={signInStyles.forgtPwd}>
+              Forgot password?
             </Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={signInStyles.loginButton}> 
+              <Text style={signInStyles.loginButtonText}> 
+                Login
+              </Text>
+            </TouchableOpacity>
+            <Text style={signInStyles.signUp}>
+              Don't have an account? 
+              <Text 
+              style={signInStyles.signUpOrange} 
+              onPress={() => navigation.navigate('SignUp')}
+              > Sign up </Text>
+            </Text>
+          </View>
+
         </View>
       </ImageBackground>
     );

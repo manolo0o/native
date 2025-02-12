@@ -6,10 +6,15 @@ const signUpStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    container: {
+    containerSignUp: {
         flex: 1,
+        width: '80%',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'start',
+    },
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'rgba(0, 0, 0, 0.1)', // Semi-transparent black overlay
     },
 });
 

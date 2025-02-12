@@ -18,7 +18,7 @@ export default function SignInScreen({ navigation }) {
         <View style={signInStyles.containerLogin}>
           <Text style={signInStyles.title}>Login</Text>
           
-          {!email && <Text style={signInStyles.inputReference}>E-mail</Text>}
+          <Text style={signInStyles.inputReference}>E-mail</Text>
           <TextInput
             style={[
               signInStyles.input,
@@ -31,7 +31,7 @@ export default function SignInScreen({ navigation }) {
           >
           </TextInput>
 
-          {!password && <Text style={signInStyles.inputReference}>Password</Text>}
+          <Text style={signInStyles.inputReference}>Password</Text>
           <TextInput
             style={[
               signInStyles.input,

@@ -1,4 +1,4 @@
-import React, { useState,  } from 'react';
+import React, { useState } from 'react';
 import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
 import signInStyles from '../styles/signInStyles.js';
 

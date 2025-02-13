@@ -25,7 +25,7 @@ const signInStyles = StyleSheet.create({
     inputReference:{
       color: 'Black',
       opacity: 0.4,
-      fontFamily: 'Montserrat_700bold',
+      fontFamily: 'Montserrat_400Regular',
       marginBottom: 5,
       fontSize: 17,
     },

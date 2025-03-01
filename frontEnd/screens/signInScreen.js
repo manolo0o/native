@@ -49,8 +49,11 @@ export default function SignInScreen({ navigation }) {
             <Text style={signInStyles.forgtPwd}>
               Forgot password?
             </Text>
-            <TouchableOpacity style={signInStyles.loginButton}> 
-              <Text style={signInStyles.loginButtonText}> 
+            <TouchableOpacity 
+              style={signInStyles.loginButton}
+              onPress={() => navigation.navigate('Home')}
+              > 
+              <Text style={signInStyles.loginButtonText}>
                 Login
               </Text>
             </TouchableOpacity>

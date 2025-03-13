@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import homeScreenStyles from "../styles/homeScreenStyles.js";
+import homeScreenStyles from "../screenStyles/homeStyles.js";
 
 // cmpnents
 import NavBar from "../components/navBar.js";

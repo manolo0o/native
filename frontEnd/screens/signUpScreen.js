@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
-import signUpStyles from '../styles/signUpStyles.js';
+import signUpStyles from '../screenStyles/signUpStyles.js';
 
 export default function SignUpScreen ({ navigation }) {
   const [fullName, setFullName] = useState('');

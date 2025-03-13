@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-import navBarStyles from '../styles/navBarStyles.js';
+import navBarStyles from '../componentStyles/navBarStyles.js';
 
 export default function NavBar() {
   const [homeIcon, setHomeIcon] = useState(require('../assets/icons/homeBlack.png'));

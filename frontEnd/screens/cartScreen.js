@@ -3,11 +3,13 @@ import { View, Text } from "react-native";
 import cartScreenStyles from "../screenStyles/cartStyles.js";
 
 //components
+import NavBar from "../components/navBar.js";
 
-export default function CartScreen() {
+export default function CartScreen({ navigation }) {
     return (
       <View style={cartScreenStyles.container}>
         <Text>Cart Screen</Text>
+        <NavBar navigation={navigation}/>
       </View>
     );
 }

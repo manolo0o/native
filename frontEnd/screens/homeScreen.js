@@ -6,13 +6,13 @@ import homeScreenStyles from "../screenStyles/homeStyles.js";
 import NavBar from "../components/navBar.js";
 import UserHeader from "../components/userHeader.js";
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
     return (
       <View style={homeScreenStyles.container}>
         <UserHeader />
         <Text>What would you like
         to order</Text>
-        <NavBar />  
+        <NavBar navigation={navigation}/>  
       </View>
     );
 }

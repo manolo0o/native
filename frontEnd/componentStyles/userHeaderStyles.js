@@ -17,11 +17,11 @@ const userHeaderStyles = StyleSheet.create({
     },
     text: {
       fontSize: 16,
-      color: 'grey',
+      color:'#8C9099',
     },
     textOrange: {
       fontSize: 16,
-      color: 'orange',
+      color: '#FE8000',
     },      
 });
 

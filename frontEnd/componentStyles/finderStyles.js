@@ -3,26 +3,34 @@ import { StyleSheet } from "react-native";
 const finderStyles = StyleSheet.create({
   containerPrincipal: {
     display: "flex",
+    width: "100%",
     flexDirection: "row",
-    borderRadius: 5,
-    borderWidth: .8,
-    borderColor: "#e0e0e0", 
+    justifyContent: "center",
+    alignItems: "center",
   },
   containerInput: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width:"65%",
     height: 50,
-    borderRadius: 5,
-    borderWidth: .8,
+    borderRadius: 15,
+    borderWidth: 1,
+    padding: 30,
     borderColor: "#e0e0e0",
   },  
   input: {
     width: "100%",
-    height: 40,
-    padding: 10,
-    borderRadius: 5,
+    height: 50,
   },
-  image: {
-    width: 100,
-    height: 100,
+  imageLupa: {
+    marginRight: 7,
+  },
+  imageFilter: {
+    width: 60,
+    hight: 60,
+    marginTop: 26,
   },
 });
 

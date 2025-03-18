@@ -6,6 +6,7 @@ const homeScreenStyles = StyleSheet.create({
     justifyContent: 'space-between', // This will push the NavBar to the bottom
     alignItems: 'center',
   },
+  
 })
 
 export default homeScreenStyles;

@@ -16,12 +16,13 @@ const userHeaderStyles = StyleSheet.create({
       height: '110%',
     },
     text: {
-      fontSize: 16,
       color:'#8C9099',
+      fontFamily: 'Montserrat_400Regular', 
+
     },
     textOrange: {
-      fontSize: 16,
       color: '#FE8000',
+      fontFamily: 'Montserrat_400Regular', 
     },      
 });
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState} from "react";
-import { Text, View, FlatList, ActivityIndicator } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import categorieStyles from "../componentStyles/categorieStyles.js";
 
 export default function CategoriesSlider() {
@@ -12,8 +12,9 @@ export default function CategoriesSlider() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:3000/products');
+      const response = await fetch('http://192.168.1.3:3000/products');
       const data = await response.json();
+      console.log(data); // Log the data to see its structure
       setCategories(data);
       setLoading(false);
     } catch (error) {
@@ -21,24 +22,25 @@ export default function CategoriesSlider() {
     }
   }
 
-  const categorieItem = ({ item }) => {
-      <View style={categorieStyles.categorieItem}>
+  const categorieItem = ({ item }) => (
+      <View style={categorieStyles.categorieItem} key={item.id ? item.id.toString() : Math.random().toString()}>
         <Text style={categorieStyles.categorieText}>{item.product__Category}</Text>
       </View>
-  };
+  );
 
   if (loading) {
     return <ActivityIndicator size='large' color='#0000ff'/>;
   }
   
-    return (
-      <View>
-        <FlatList
-          data={categories}
-          renderItem={categorieItem}
-          keyExtractor={item => item.id}
-          horizontal
-        />
-      </View>
-    );
+  return (
+    <View style={categorieStyles.sliderContainer}> 
+      <FlatList
+        data={categories}
+        renderItem={categorieItem}
+        keyExtractor={item => item.id ? item.id.toString() : Math.random().toString()}
+        horizontal
+        style={categorieStyles.Slider}
+      />
+    </View>
+  );
 }

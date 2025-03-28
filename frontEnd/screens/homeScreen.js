@@ -7,6 +7,7 @@ import NavBar from "../components/navBar.js";
 import UserHeader from "../components/userHeader.js";
 import Finder from "../components/finder.js";
 import CategoriesSlider from "../components/categories_Slider.js";
+import PopularItemsSlider from "../components/popularItems_Slider.js";
 
 export default function HomeScreen({ navigation }) {
     return (
@@ -14,6 +15,7 @@ export default function HomeScreen({ navigation }) {
         <UserHeader />
         <Finder />
         <CategoriesSlider />
+        <PopularItemsSlider  />
         <NavBar navigation={navigation}/>  
       </View>
     );

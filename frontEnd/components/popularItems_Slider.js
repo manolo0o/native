@@ -14,7 +14,6 @@ export default function PopularItemsSlider() {
     try {
       const response = await fetch('http://192.168.0.17:3000/products');
       const data = await response.json();
-      console.log(data); // Verifica la estructura de los datos
       setItems(data);
       setLoading(false);
     } catch (error) {
@@ -23,7 +22,7 @@ export default function PopularItemsSlider() {
   };
 
   const renderedIProduct = ({ item }) => (
-    <TouchableOpacity onPress={() => console.log(item.product__Image)}>
+    <TouchableOpacity style={popularItemsStyles.itemContainerButton}>
       <View style={popularItemsStyles.imageContainer}>
         <Image 
           style={popularItemsStyles.image}
@@ -36,7 +35,7 @@ export default function PopularItemsSlider() {
           ${item.product__Rating}
           <Image 
             style={popularItemsStyles.star}
-            //source={require('')}
+            source={require('../assets/icons/star.png')}
           />
           <Text style={popularItemsStyles.ratingCount}>
             (25+)
@@ -55,7 +54,7 @@ export default function PopularItemsSlider() {
 
   return (
     <View style={popularItemsStyles.sliderContainer}>
-      <Text srtyle={popularItemsStyles.title}>Popular Items</Text>
+      <Text style={popularItemsStyles.title}>Popular Items</Text>
       <FlatList 
         data={items}
         renderItem={renderedIProduct}  

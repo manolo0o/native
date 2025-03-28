@@ -13,9 +13,8 @@ export default function CategoriesSlider() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://192.168.1.3:3000/products');
+      const response = await fetch('http://192.168.0.17:3000/products');
       const data = await response.json();
-      console.log(data); // Log the data to see its structure
       setCategories(data);
       setLoading(false);
     } catch (error) {
@@ -24,9 +23,8 @@ export default function CategoriesSlider() {
   }
 
   const handlePress = (category) => {
-    console.log('Pressed item category:', category);
     setPressedItemCategory(category);
-  };
+  };  
 
   const categorieItem = ({ item }) => (
     <TouchableOpacity

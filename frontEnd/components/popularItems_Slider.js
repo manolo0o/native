@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import popularItemsStyles from '../componentStyles/popularItemsStyles.js';
+import { API_BASE_URL } from '@env';
 
 export default function PopularItemsSlider() {
   const [items, setItems] = useState([]);
@@ -12,7 +13,7 @@ export default function PopularItemsSlider() {
 
   const fetchItems = async () => {
     try {
-      const response = await fetch('http://192.168.0.17:3000/products');
+      const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       setItems(data);
       setLoading(false);
@@ -22,28 +23,40 @@ export default function PopularItemsSlider() {
   };
 
   const renderedIProduct = ({ item }) => (
+    
     <TouchableOpacity style={popularItemsStyles.itemContainerButton}>
+    
       <View style={popularItemsStyles.imageContainer}>
+        
         <Image 
           style={popularItemsStyles.image}
           source={item.product__Image ? { uri: item.product__Image } : require('../assets/icon.png')}
         />
-        <Text style={popularItemsStyles.price}>
-          ${item.product__Price}
-        </Text>
-        <Text style={popularItemsStyles.rating}>
-          ${item.product__Rating}
-          <Image 
-            style={popularItemsStyles.star}
-            source={require('../assets/icons/star.png')}
-          />
-          <Text style={popularItemsStyles.ratingCount}>
-            (25+)
+
+        <View style={popularItemsStyles.overlay}>
+          <Text style={popularItemsStyles.price}>
+            <Text style={popularItemsStyles.dollarSign}>$</Text>
+            {item.product__Price}
           </Text>
-        </Text>
+          <Text style={popularItemsStyles.rating}>
+            {item.product__Rating}
+            <Image 
+              style={popularItemsStyles.star}
+              source={require('../assets/icons/star.png')}
+              />
+            <Text style={popularItemsStyles.ratingCount}>
+              (25+)
+            </Text>
+          </Text>
+        </View>
+      
       </View>
-      <Text>{item.product__Name}</Text>
-      <Text>{item.product__Category}</Text>
+
+      <View style={popularItemsStyles.textContainer}>
+        <Text style={popularItemsStyles.productName}>{item.product__Name}</Text>
+        <Text style={popularItemsStyles.productCategory}>{item.product__Category}</Text>
+      </View>
+
     </TouchableOpacity>
   );
 

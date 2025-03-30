@@ -13,7 +13,7 @@ const finderStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    width:"65%",
+    width:"75%",
     height: 50,
     borderRadius: 15,
     borderWidth: 1,

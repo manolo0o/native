@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from "react-native";
 import categorieStyles from "../componentStyles/categorieStyles.js";
+import { API_BASE_URL } from '@env';
 
 export default function CategoriesSlider() {
   const [categories, setCategories] = useState([]);
@@ -11,9 +12,10 @@ export default function CategoriesSlider() {
     fetchCategories();
   }, []);
 
+
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://192.168.0.17:3000/products');
+      const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       setCategories(data);
       setLoading(false);

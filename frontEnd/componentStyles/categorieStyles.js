@@ -1,12 +1,16 @@
 import { StyleSheet } from "react-native";
 
 const categorieStyles = StyleSheet.create({
+  sliderContainer:{
+    marginBottom: 20,
+  },
   categorieItem: {
-    padding: 10,
+    padding: 12,
     marginLeft: 20,
     borderColor: '#FE8000',
     borderWidth: 1, 
     borderRadius: 11,
+    backgroundColor: '#fff',
   },
   categorieText: {
     fontSize: 12,
@@ -14,7 +18,7 @@ const categorieStyles = StyleSheet.create({
   },
   categorieItemPressed: {
     backgroundColor: '#FE8000',
-    padding: 10,
+    padding: 12,
     marginLeft: 20,
     borderColor: '#FE8000',
     borderWidth: .5, 

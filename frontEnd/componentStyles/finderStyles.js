@@ -6,8 +6,8 @@ const finderStyles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
   },
+
   containerInput: {
     display: "flex",
     flexDirection: "row",
@@ -19,6 +19,7 @@ const finderStyles = StyleSheet.create({
     borderWidth: 1,
     padding: 30,
     borderColor: "#e0e0e0",
+    backgroundColor: "#fff",
   },  
   input: {
     width: "100%",
@@ -27,10 +28,14 @@ const finderStyles = StyleSheet.create({
   imageLupa: {
     marginRight: 7,
   },
+
+  imageContainer: {
+    width: 60, 
+    height: 90, 
+  },
   imageFilter: {
-    width: 60,
-    hight: 60,
-    marginTop: 26,
+    width: '100%',
+    height: '100%',
   },
 });
 

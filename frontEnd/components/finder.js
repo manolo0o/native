@@ -12,11 +12,13 @@ export default function Finder() {
 
   return (
     <View style={finderStyles.containerPrincipal}>
+
       <View style={finderStyles.containerInput}>
         <Image 
           style={finderStyles.imageLupa}
           source={require('../assets/icons/find.png')}
         />  
+
         <TextInput
           style={finderStyles.input}
           placeholder="Find for food or restaurant..."
@@ -24,10 +26,13 @@ export default function Finder() {
           onChangeText={handleSearch}
         />
       </View>
-      <Image 
-        style={finderStyles.imageFilter}
-        source={require('../assets/icons/Settings.png')}
-      />
+
+      <View style={finderStyles.imageContainer}>
+        <Image 
+          style={finderStyles.imageFilter}
+          source={require('../assets/icons/Settings.png')}
+        />
+      </View>
     </View>
     
   );

@@ -12,10 +12,14 @@ import PopularItemsSlider from "../components/popularItems_Slider.js";
 export default function HomeScreen({ navigation }) {
     return (
       <View style={homeScreenStyles.container}>
-        <UserHeader />
-        <Finder />
-        <CategoriesSlider />
-        <PopularItemsSlider  />
+
+        <View style={homeScreenStyles.contentContainer}>
+          <UserHeader />
+          <Finder />
+          <CategoriesSlider />
+          <PopularItemsSlider  />
+        </View>
+      
         <NavBar navigation={navigation}/>  
       </View>
     );

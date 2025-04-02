@@ -1,7 +1,8 @@
+import { API_BASE_URL_2 } from '@env';
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from "react-native";
-import categorieStyles from "../componentStyles/categorieStyles.js";
-import { API_BASE_URL } from '@env';
+import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
+//import { API_BASE_URL } from '@env';
+
 
 export default function CategoriesSlider() {
   const [categories, setCategories] = useState([]);
@@ -15,7 +16,7 @@ export default function CategoriesSlider() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/products`);
+      const response = await fetch(`${API_BASE_URL_2}/products`);
       const data = await response.json();
       setCategories(data);
       setLoading(false);
@@ -34,6 +35,10 @@ export default function CategoriesSlider() {
       key={item.product__Category}
       onPress={() => handlePress(item.product__Category)}
     >
+      <Image
+        style={categorieStyles.categorieImage}
+        source={{ uri: item.product__Category_Image }}
+      />
       <Text 
         style={item.product__Category === pressedItemCategory ? categorieStyles.categorieTextPressed : categorieStyles.categorieText} 
       >
@@ -59,3 +64,51 @@ export default function CategoriesSlider() {
     </View>
   );
 }
+
+const categorieStyles = StyleSheet.create({
+  sliderContainer:{
+    marginBottom: 20,
+  },
+  categorieItem: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingRight: 20,
+    padding: 10,
+    marginLeft: 20,
+    borderColor: '#FE8000',
+    borderWidth: 1, 
+    borderRadius: 11,
+    backgroundColor: '#fff',
+  },
+  categorieText: {
+    fontSize: 12,
+    fontFamily: 'Montserrat_700Bold',
+  },
+  categorieItemPressed: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FE8000',
+    paddingLeft: 10,
+    paddingRight: 20,
+    padding: 10,
+    marginLeft: 20,
+    borderColor: '#FE8000',
+    borderWidth: .5, 
+    borderRadius: 11,
+  },
+  categorieImage:{
+    width: 25,
+    height: 25,
+    marginRight: 10,
+  },
+  categorieTextPressed: {
+    fontSize: 12,
+    fontFamily: 'Montserrat_700Bold',
+    color: '#fff',
+  }
+});

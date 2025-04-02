@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Text, TextInput, View, Image} from "react-native";
-import finderStyles from "../componentStyles/finderStyles.js";
+import { StyleSheet, TextInput, View, Image} from "react-native";
 
 export default function Finder() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -37,3 +36,42 @@ export default function Finder() {
     
   );
 }
+
+const finderStyles = StyleSheet.create({
+  containerPrincipal: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+
+  containerInput: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width:"75%",
+    height: 50,
+    borderRadius: 15,
+    borderWidth: 1,
+    padding: 30,
+    borderColor: "#e0e0e0",
+    backgroundColor: "#fff",
+  },  
+  input: {
+    width: "100%",
+    height: 50,
+  },
+  imageLupa: {
+    marginRight: 7,
+  },
+
+  imageContainer: {
+    width: 60, 
+    height: 90, 
+  },
+  imageFilter: {
+    width: '100%',
+    height: '100%',
+  },
+});

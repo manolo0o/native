@@ -1,7 +1,6 @@
 import { useNavigationState } from '@react-navigation/native';
 import React, { useEffect, useState } from "react";
-import { Image, TouchableOpacity, View } from "react-native";
-import navBarStyles from '../componentStyles/navBarStyles.js';
+import { StyleSheet, Image, TouchableOpacity, View } from "react-native";
 
 export default function NavBar({ navigation }) {
   const [selectedIcon, setSelectedIcon] = useState('home');
@@ -55,3 +54,19 @@ export default function NavBar({ navigation }) {
     </View>
   );
 }
+
+const navBarStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    height: 60,
+    width: '100%',
+    bottom: 0,
+  },
+  image: {
+    width: 30,
+    height: 30,
+  },
+});

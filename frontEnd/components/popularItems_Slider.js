@@ -14,7 +14,7 @@ export default function PopularItemsSlider({ navigation }) {
 
   const fetchItems = async () => {
     try {
-      //console.log('Fetching from:', `${API_BASE_URL}/products`); // Log the URL
+      //  console.log('Fetching from:', `${API_BASE_URL}/products`); // Log the URL
       const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       setItems(data);
@@ -50,7 +50,7 @@ export default function PopularItemsSlider({ navigation }) {
               source={require('../assets/icons/star.png')}
               />
             <Text style={popularItemsStyles.ratingCount}>
-              (25+)
+              ({item.product__Reviews}+) 
             </Text>
           </Text>
         </View>
@@ -134,6 +134,8 @@ const popularItemsStyles = StyleSheet.create({
     padding: 5,
     borderRadius: 20,
     alignSelf: 'flex-start', // Alineado a la izquierda
+    fontFamily: 'Montserrat_700Bold',
+    
   },
   ratingCount: {
     fontSize: 10,

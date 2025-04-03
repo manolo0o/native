@@ -1,7 +1,7 @@
-import { API_BASE_URL_2 } from '@env';
+//import { API_BASE_URL_2 } from '@env';
+import { API_BASE_URL } from '@env';
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View, StyleSheet } from "react-native";
-//import { API_BASE_URL } from '@env';
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
 export default function CategoriesSlider() {
@@ -16,14 +16,15 @@ export default function CategoriesSlider() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL_2}/products`);
+      //console.log('Fetching from:', `${API_BASE_URL}/products`); // Log the URL
+      const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       setCategories(data);
       setLoading(false);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching items:', error);
     }
-  }
+  };
 
   const handlePress = (category) => {
     setPressedItemCategory(category);

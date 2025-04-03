@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import homeScreenStyles from "../screenStyles/homeStyles.js";
+import homeScreenStyles from "../Styles/homeStyles.js";
 
 // components
 import NavBar from "../components/navBar.js";
@@ -17,7 +17,7 @@ export default function HomeScreen({ navigation }) {
           <UserHeader />
           <Finder />
           <CategoriesSlider />
-          <PopularItemsSlider  />
+          <PopularItemsSlider  navigation={navigation}/>
         </View>
       
         <NavBar navigation={navigation}/>  

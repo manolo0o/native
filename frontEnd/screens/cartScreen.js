@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import cartScreenStyles from "../screenStyles/cartStyles.js";
+import cartScreenStyles from "../Styles/cartStyles.js";
 
 //components
 import NavBar from "../components/navBar.js";

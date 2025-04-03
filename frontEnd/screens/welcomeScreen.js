@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import { useFonts , Montserrat_700Bold, Montserrat_400Regular, Montserrat_600SemiBold,  } from '@expo-google-fonts/montserrat';
-import welcomeStyles from '../screenStyles/welcomeStyles.js';
+import welcomeStyles from '../Styles/welcomeStyles.js';
 
 export default function WelcomeScreen({ navigation }) {
     let [fontsLoaded] = useFonts({

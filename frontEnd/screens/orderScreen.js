@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import orderScreenStyles from "../screenStyles/orderStyles.js";
+import orderScreenStyles from "../Styles/orderStyles.js";
 
 //components
 import NavBar from "../components/navBar.js";

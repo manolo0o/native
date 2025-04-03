@@ -8,6 +8,7 @@ import SignInScreen from './screens/signInScreen';
 import HomeScreen from './screens/homeScreen';
 import CartScreen from './screens/cartScreen';
 import OrderScreen from './screens/orderScreen';
+import ProductScreen from './screens/productScreen';
 
 const Stack = createStackNavigator();
 
@@ -58,7 +59,13 @@ export default function App() {
           component={OrderScreen}
           options={{ headerShown: false }}
         />
-      
+
+        <Stack.Screen
+          name="Product"
+          component={ProductScreen}
+          options={{ headerShown: false }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

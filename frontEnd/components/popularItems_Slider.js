@@ -4,7 +4,7 @@ import { API_BASE_URL_2 } from '@env';
 //import { API_BASE_URL } from '@env';
 
 
-export default function PopularItemsSlider() {
+export default function PopularItemsSlider({ navigation }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);  
   
@@ -25,7 +25,10 @@ export default function PopularItemsSlider() {
 
   const renderedIProduct = ({ item }) => (
     
-    <TouchableOpacity style={popularItemsStyles.itemContainerButton}>
+    <TouchableOpacity 
+      style={popularItemsStyles.itemContainerButton}
+      onPress={() => navigation.navigate('Product', { item })}
+      >
     
       <View style={popularItemsStyles.imageContainer}>
         

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, ImageBackground, TextInput, TouchableOpacity} from 'react-native';
-import signInStyles from '../screenStyles/signInStyles.js';
+import signInStyles from '../Styles/signInStyles.js';
 
 export default function SignInScreen({ navigation }) {
   const [email, setEmail] = useState('');

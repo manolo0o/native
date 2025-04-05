@@ -14,7 +14,7 @@ export default function PopularItemsSlider({ navigation }) {
 
   const fetchItems = async () => {
     try {
-      //  console.log('Fetching from:', `${API_BASE_URL}/products`); // Log the URL
+      console.log('Fetching from:', `${API_BASE_URL}/products`); // Log the URL
       const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       setItems(data);

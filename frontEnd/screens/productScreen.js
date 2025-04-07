@@ -1,6 +1,6 @@
-import { API_BASE } from '@env';
+import { API_URL_NEW } from '@env';
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 // components
 import QuantitySelector from "../components/QuantitySelector.js";
@@ -9,6 +9,7 @@ export default function ProductScreen({ route , navigation }) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { item } = route.params;
+    const [comment, setComment] = useState(""); // State to store the comment
 
     useEffect(() => {
       fetchProducts();
@@ -16,7 +17,7 @@ export default function ProductScreen({ route , navigation }) {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${API_BASE}/products`);
+        const response = await fetch(`${API_URL_NEW}/products`);
         const data = await response.json();
         setProducts(data);
         setLoading(false);
@@ -62,7 +63,7 @@ export default function ProductScreen({ route , navigation }) {
                 See reviews   
               </Text>
             </View>
-            
+
             <View style={productScreenStyles.priceAndQuantityContainer}>
               <Text style={productScreenStyles.productPrice}>
                 <Text style={productScreenStyles.dollarSign}>$</Text>
@@ -77,13 +78,40 @@ export default function ProductScreen({ route , navigation }) {
             <Text style={productScreenStyles.productDescription}>
               {item.product__Description}
             </Text>
+            
+            {/* Size and Delivery Time */}
+            <View style={productScreenStyles.sizeAndDeliveryContainer}>
+              {/* Product Size */}
+              <View style={productScreenStyles.sizeContainer}>
+                <Text style={productScreenStyles.sizeLabel}>Size</Text>
+                <Text style={productScreenStyles.sizeValue}>{item.product__Size}</Text>
+              </View>
+
+              {/* Average Delivery Time */}
+              <View style={productScreenStyles.deliveryContainer}>
+                <Text style={productScreenStyles.deliveryLabel}>Delivery</Text>
+                <Text style={productScreenStyles.deliveryValue}>{item.product__Avg_Delivery_Time} min</Text>
+              </View>
+            </View>
+
+            {/* Comment Input */}
+            <TextInput
+              style={productScreenStyles.commentInput}
+              placeholder="Add a comment for your order..."
+              placeholderTextColor="#A8A8A8"
+              value={comment}
+              onChangeText={(text) => setComment(text)}
+              multiline
+            />
+
           </View>
         </ScrollView>
+
 
         {/* Add to Cart Button */}
         <TouchableOpacity 
           style={productScreenStyles.addToCartButton} 
-          onPress={() => console.log('Added to Cart:', item.product__Name)}
+          onPress={() => console.log('Added to Cart:', item.product__Name, 'Comment:', comment)}
         >
           <Text style={productScreenStyles.addToCartButtonText}>Add to Cart</Text>
         </TouchableOpacity>
@@ -191,4 +219,63 @@ const productScreenStyles = StyleSheet.create({
   scrollContent: {
     alignItems: 'center',
   },
+  sizeAndDeliveryContainer: {
+    flexDirection: 'row', // Align the two containers horizontally
+    justifyContent: 'space-between', // Add space between the two containers
+    marginBottom: 10, // Reduce spacing below the container
+    width: '70%',
+  },
+  sizeContainer: {
+    flex: 0.45, // Reduce the width of the container (45% of the row)
+    alignItems: 'flex-start', // Align content to the start
+    flexDirection: 'column', // Stack label and value vertically
+    borderWidth: 1, // Add border
+    borderColor: '#FE8000', // Border color
+    borderRadius: 10, // Rounded corners
+    padding: 10, // Add padding inside the container
+    marginRight: 5, // Add spacing between the two containers
+  },
+  deliveryContainer: {
+    flex: 0.45, // Reduce the width of the container (45% of the row)
+    flexDirection: 'column', // Stack label and value vertically
+    borderWidth: 1, // Add border
+    borderColor: '#FE8000', // Border color
+    borderRadius: 10, // Rounded corners
+    padding: 10, // Add padding inside the container
+  },
+  sizeLabel: {
+    fontSize: 14,
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#FE8000',
+  },
+  sizeValue: {
+    fontSize: 16,
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#000',
+    marginTop: 5, // Add spacing between label and value
+  },
+  deliveryLabel: {
+    fontSize: 14,
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#FE8000',
+  },
+  deliveryValue: {
+    fontSize: 16,
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#000',
+    marginTop: 5, // Add spacing between label and value
+  },
+  commentInput: {
+    borderWidth: .3,
+    height: 100,
+    borderColor: '#A8A8A8',
+    borderRadius: 10,
+    padding: 10,
+    fontSize: 14,
+    fontFamily: 'Montserrat_400Regular',
+    color: '#000',
+    marginTop: 10,
+    marginBottom: 20,
+    textAlignVertical: 'top', // Align text to the top of the TextInput
+  }, 
 });

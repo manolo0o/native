@@ -1,6 +1,7 @@
 import { API_URL_NEW } from '@env';
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import turnbackIcon from '../assets/icons/turnBack.png';
 
 // components
 import QuantitySelector from "../components/QuantitySelector.js";
@@ -35,6 +36,18 @@ export default function ProductScreen({ route , navigation }) {
       <View style={productScreenStyles.container}>
         <ScrollView contentContainerStyle={productScreenStyles.scrollContent}>
           <View style={productScreenStyles.imageContainer}>
+            {/* Turn Back Icon */}
+            <TouchableOpacity 
+              style={productScreenStyles.turnBackButton} 
+              onPress={() => navigation.goBack()} // Navigate back to the previous screen
+            >
+              <Image 
+                style={productScreenStyles.turnBackIcon} 
+                source={turnbackIcon} 
+              />
+            </TouchableOpacity>
+
+            {/* Product Image */}
             <Image 
               style={productScreenStyles.image}
               source={{ uri: item.product__Image }}
@@ -278,4 +291,14 @@ const productScreenStyles = StyleSheet.create({
     marginBottom: 20,
     textAlignVertical: 'top', // Align text to the top of the TextInput
   }, 
+  turnBackButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
+  },
+  turnBackIcon: {
+    width: 80,
+    height: 80,
+  },
 });

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, View, Image} from "react-native";
+import { Image, StyleSheet, TextInput, View } from "react-native";
 
 export default function Finder() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -11,8 +12,10 @@ export default function Finder() {
 
   return (
     <View style={finderStyles.containerPrincipal}>
-
-      <View style={finderStyles.containerInput}>
+      <View style={[
+        finderStyles.containerInput, 
+        isFocused && { borderColor: "gray" }
+      ]}>
         <Image 
           style={finderStyles.imageLupa}
           source={require('../assets/icons/find.png')}
@@ -23,6 +26,9 @@ export default function Finder() {
           placeholder="Find for food or restaurant..."
           value={searchQuery}
           onChangeText={handleSearch}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          selectionColor="gray" // Set text cursor color to gray
         />
       </View>
 
@@ -33,7 +39,6 @@ export default function Finder() {
         />
       </View>
     </View>
-    
   );
 }
 
@@ -61,6 +66,7 @@ const finderStyles = StyleSheet.create({
   input: {
     width: "100%",
     height: 50,
+    fontFamily: "Montserrat_400Regular",
   },
   imageLupa: {
     marginRight: 7,

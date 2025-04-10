@@ -1,7 +1,8 @@
 import { API_URL_NEW } from '@env';
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import turnbackIcon from '../assets/icons/turnBack.png';
+import { CartContext } from '../context/CartContext';
 
 // components
 import QuantitySelector from "../components/QuantitySelector.js";
@@ -11,6 +12,8 @@ export default function ProductScreen({ route , navigation }) {
     const [loading, setLoading] = useState(true);
     const { item } = route.params;
     const [comment, setComment] = useState(""); // State to store the comment
+    const [quantity, setQuantity] = useState(1); // Track quantity
+    const { addToCart } = useContext(CartContext); // Access addToCart function
 
     useEffect(() => {
       fetchProducts();
@@ -29,7 +32,12 @@ export default function ProductScreen({ route , navigation }) {
 
     const handleQuantityChange = (newQuantity) => {
       console.log('New Quantity:', newQuantity);
-      // You can update the cart or state here
+      setQuantity(newQuantity);
+    };
+
+    const handleAddToCart = () => {
+      addToCart(item, quantity, comment); // Add item to cart
+      navigation.navigate('Cart'); // Navigate to the Cart screen
     };
 
     return (
@@ -124,7 +132,7 @@ export default function ProductScreen({ route , navigation }) {
         {/* Add to Cart Button */}
         <TouchableOpacity 
           style={productScreenStyles.addToCartButton} 
-          onPress={() => console.log('Added to Cart:', item.product__Name, 'Comment:', comment)}
+          onPress={handleAddToCart}
         >
           <Text style={productScreenStyles.addToCartButtonText}>Add to Cart</Text>
         </TouchableOpacity>

@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function QuantitySelector({ initialQuantity = 1, onQuantityChange }) {
   const [quantity, setQuantity] = useState(initialQuantity);
+
+  useEffect(() => {
+    setQuantity(initialQuantity); // Update local state when initialQuantity changes
+  }, [initialQuantity]);
 
   const increaseQuantity = () => {
     const newQuantity = quantity + 1;

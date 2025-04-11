@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
-//import { API_BASE_URL_2 } from '@env';
+import { API_BASE_URL_2 } from '@env';
 import { API_URL_NEW } from '@env';
 
 
@@ -14,8 +14,8 @@ export default function PopularItemsSlider({ navigation }) {
 
   const fetchItems = async () => {
     try {
-      console.log('Fetching from:', `${API_URL_NEW}/products`); // Log the URL
-      const response = await fetch(`${API_URL_NEW}/products`);
+      console.log('Fetching from:', `${API_BASE_URL_2}/products`); // Log the URL
+      const response = await fetch(`${API_BASE_URL_2}/products`);
       const data = await response.json();
       setItems(data);
       setLoading(false);

@@ -1,4 +1,4 @@
-//import { API_BASE_URL_2 } from '@env';
+import { API_BASE_URL_2 } from '@env';
 import { API_URL_NEW } from '@env';
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -16,8 +16,8 @@ export default function CategoriesSlider() {
 
   const fetchCategories = async () => {
     try {
-      console.log('Fetching from:', `${API_URL_NEW}/products`); // Log the URL
-      const response = await fetch(`${API_URL_NEW}/products`);
+      console.log('Fetching from:', `${API_BASE_URL_2}/products`); // Log the URL
+      const response = await fetch(`${API_BASE_URL_2}/products`);
       const data = await response.json();
       setCategories(data);
       setLoading(false);

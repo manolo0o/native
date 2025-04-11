@@ -2,10 +2,16 @@ import React, { useContext } from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import turnbackIcon from '../assets/icons/turnBack.png';
 import NavBar from "../components/navBar.js";
+import QuantitySelector from '../components/QuantitySelector.js'; // Import QuantitySelector
 import { CartContext } from '../context/CartContext';
 
 export default function CartScreen({ navigation }) {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, updateCartItemQuantity } = useContext(CartContext);
+
+  if (!updateCartItemQuantity) {
+    console.error("updateCartItemQuantity is not defined in CartContext. Verify its implementation.");
+    return null; // Prevent rendering if the function is undefined
+  }
 
   const renderCartItem = ({ item }) => {
     if (!item) return null; // Handle undefined or null items
@@ -23,22 +29,28 @@ export default function CartScreen({ navigation }) {
           <Text style={cartScreenStyles.cartItemName}>{item.product__Name}</Text>
           <Text style={cartScreenStyles.cartItemDescription}>{item.product__Category}</Text>
           <Text style={cartScreenStyles.cartItemPrice}>${item.product__Price.toFixed(2)}</Text>
-          <Text style={cartScreenStyles.cartItemQuantity}>Quantity: {item.quantity}</Text>
-          {item.comment ? (
-            <Text style={cartScreenStyles.cartItemComment}>Comment: {item.comment}</Text>
-          ) : null}
         </View>
 
-        {/* Remove Button */}
-        <TouchableOpacity 
-          onPress={() => removeFromCart(item.id)} 
-          style={cartScreenStyles.removeButton}
-        >
-          <Text style={cartScreenStyles.removeButtonText}>X</Text>
-        </TouchableOpacity>
+        {/* Actions Container */}
+        <View style={cartScreenStyles.actionsContainer}>
+          <TouchableOpacity 
+            onPress={() => removeFromCart(item.id)} 
+            style={cartScreenStyles.removeButton}
+          >
+            <Text style={cartScreenStyles.removeButtonText}>X</Text>
+          </TouchableOpacity>
+          <QuantitySelector
+            initialQuantity={item.quantity} // Ensure initial quantity matches cart item
+            onQuantityChange={(newQuantity) => updateCartItemQuantity(item.id, newQuantity)} // Update cart item quantity
+          />
+        </View>
       </View>
     );
   };
+
+  const order = cartItems.reduce((sum, item) => sum + item.product__Price * item.quantity, 0);
+  const delivery = 7.50;
+  const total = order + delivery;
 
   return (
     <View style={cartScreenStyles.container}>
@@ -68,6 +80,30 @@ export default function CartScreen({ navigation }) {
         />
       </View>
 
+      {/* Order Summary */}
+      {cartItems.length > 0 && (
+        <View style={cartScreenStyles.summaryContainer}>
+          <View style={cartScreenStyles.summaryRow}>
+            <Text style={cartScreenStyles.summaryLabel}>Order:</Text>
+            <Text style={cartScreenStyles.summaryValue}>
+              ${order.toFixed(2)} <Text style={cartScreenStyles.currencyText}>USD</Text>
+            </Text>
+          </View>
+          <View style={cartScreenStyles.summaryRow}>
+            <Text style={cartScreenStyles.summaryLabel}>Delivery:</Text>
+            <Text style={cartScreenStyles.summaryValue}>
+              ${delivery.toFixed(2)} <Text style={cartScreenStyles.currencyText}>USD</Text>
+            </Text>
+          </View>
+          <View style={cartScreenStyles.summaryRow}>
+            <Text style={cartScreenStyles.summaryLabel}>Total:</Text>
+            <Text style={cartScreenStyles.summaryValue}>
+              ${total.toFixed(2)} <Text style={cartScreenStyles.currencyText}>USD</Text>
+            </Text>
+          </View>
+        </View>
+      )}
+
       <NavBar navigation={navigation}/>
     </View>
   );
@@ -79,7 +115,6 @@ const cartScreenStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#fff',
-    padding: 10,
   },
   HeaderTurnBack: {
     flexDirection: 'row',
@@ -105,74 +140,91 @@ const cartScreenStyles = StyleSheet.create({
     color: '#000',
   },
   cartItem: {
-    flexDirection: 'row', // Align image and details horizontally
-    alignItems: 'center', // Vertically center the content
-    marginBottom: 15, // Add spacing between items
-    borderWidth: 1, // Add a border for better visibility
-    borderColor: '#ddd', // Light gray border
-    borderRadius: 10, // Rounded corners
-    padding: 10, // Add padding inside the container
-    backgroundColor: '#fff', // White background for visibility
-    width: '95%', // Ensure the item takes up most of the screen width
-    alignSelf: 'center', // Center the item horizontally
-    shadowColor: '#000', // Add shadow for better visibility
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3, // For Android shadow
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+    backgroundColor: '#fff',
+    width: '95%',
+    alignSelf: 'center',
   },
   cartItemImage: {
-    width: 80, // Set the width of the image
-    height: 80, // Set the height of the image
-    borderRadius: 10, // Rounded corners for the image
-    marginRight: 15, // Add spacing between the image and details
-    backgroundColor: '#f0f0f0', // Add a background color to ensure visibility
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    marginRight: 15,
   },
   cartItemDetails: {
-    flex: 1, // Take up the remaining space
-    justifyContent: 'center', // Center the text vertically
+    flex: 1,
+    justifyContent: 'center',
   },
   cartItemName: {
-    fontSize: 16, // Larger font for the product name
-    fontWeight: 'bold', // Bold text for emphasis
-    marginBottom: 5, // Add spacing below the name
-    color: '#000', // Ensure the text is visible
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#000',
+    fontFamily: 'Montserrat_400Regular',
   },
   cartItemDescription: {
-    fontSize: 14, // Smaller font for the description
-    color: '#888', // Gray color for less emphasis
-    marginBottom: 5, // Add spacing below the description
+    fontSize: 14,
+    color: '#888',
+    marginBottom: 5,
+    fontFamily: 'Montserrat_400Regular',
   },
   cartItemPrice: {
-    fontSize: 14, // Standard font size for the price
-    color: '#FE8000', // Orange color for visibility
-    marginBottom: 5, // Add spacing below the price
+    fontSize: 14,
+    color: '#FE8000',
+    marginBottom: 5,
+    fontFamily: 'Montserrat_700Bold',
   },
-  cartItemQuantity: {
-    fontSize: 14, // Standard font size for the quantity
-    color: '#000', // Black color for visibility
-    marginBottom: 5, // Add spacing below the quantity
-  },
-  cartItemComment: {
-    fontSize: 12, // Smaller font for the comment
-    color: '#555', // Dark gray color for less emphasis
+  actionsContainer: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+    width: 70,
   },
   removeButton: {
-    backgroundColor: '#FF0000', // Red background for the remove button
-    borderRadius: 10, // Rounded corners
-    padding: 10, // Add padding inside the button
-    justifyContent: 'center', // Center the text
-    alignItems: 'center', // Center the text
+    borderRadius: 10,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10, // Add spacing between removeButton and QuantitySelector
   },
   removeButtonText: {
-    color: '#fff', // White text for contrast
-    fontWeight: 'bold', // Bold text for emphasis
+    color: '#FE8000',
+    fontFamily: 'Montserrat_400Regular',
   },
   emptyCartText: {
     fontSize: 16,
     color: '#888',
     textAlign: 'center',
     marginTop: 20,
+  },
+  summaryContainer: {
+    width: '95%',
+    alignSelf: 'center',
+    marginBottom: 20,
+    padding: 10,
+    borderRadius: 10,
+  },
+  summaryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10, // Add spacing between rows
+  },
+  summaryLabel: {
+    fontSize: 17, // Slightly larger font for labels
+    fontFamily: 'Montserrat_400Regular',
+    color: '#000',
+  },
+  summaryValue: {
+    fontSize: 20, // Larger font for values
+    fontFamily: 'Montserrat_600SemiBold',
+    color: '#000',
+  },
+  currencyText: {
+    fontSize: 12, // Smaller font for "USD"
+    fontFamily: 'Montserrat_400Regular',
+    color: 'gray',
   },
 });
 

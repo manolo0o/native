@@ -16,8 +16,8 @@ export default function CategoriesSlider() {
 
   const fetchCategories = async () => {
     try {
-      console.log('Fetching from:', `${API_BASE_URL_2}/products`); // Log the URL
-      const response = await fetch(`${API_BASE_URL_2}/products`);
+      console.log('Fetching from:', `${API_URL_NEW}/products`); // Log the URL
+      const response = await fetch(`${API_URL_NEW}/products`);
       const data = await response.json();
       setCategories(data);
       setLoading(false);

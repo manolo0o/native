@@ -22,7 +22,7 @@ export default function ProductScreen({ route , navigation }) {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL_2}/products`);
+        const response = await fetch(`${API_URL_NEW}/products`);
         const data = await response.json();
         setProducts(data);
         setLoading(false);

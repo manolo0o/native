@@ -1,5 +1,5 @@
 import { API_URL_NEW } from '@env';
-import { API_BASE_URL_2 } from '@env';
+import axios from 'axios';
 import React, { useContext, useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import turnbackIcon from '../assets/icons/turnBack.png';
@@ -22,9 +22,8 @@ export default function ProductScreen({ route , navigation }) {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${API_URL_NEW}/products`);
-        const data = await response.json();
-        setProducts(data);
+        const response = await axios.get(`${API_URL_NEW}/products`);
+        setProducts(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching items:', error);

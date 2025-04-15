@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
-import { API_BASE_URL_2 } from '@env';
 import { API_URL_NEW } from '@env';
-
+import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function PopularItemsSlider({ navigation }) {
   const [items, setItems] = useState([]);
@@ -15,9 +14,8 @@ export default function PopularItemsSlider({ navigation }) {
   const fetchItems = async () => {
     try {
       console.log('Fetching from:', `${API_URL_NEW}/products`); // Log the URL
-      const response = await fetch(`${API_URL_NEW}/products`);
-      const data = await response.json();
-      setItems(data);
+      const response = await axios.get(`${API_URL_NEW}/products`);
+      setItems(response.data);
       setLoading(false);
     } catch (error) {
       console.error('Error:', error);

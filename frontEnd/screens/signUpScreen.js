@@ -30,6 +30,7 @@ export default function SignUpScreen ({ navigation }) {
                 onChangeText={setFullName}
                 onFocus={() => setIsFullNameFocused(true)}
                 onBlur={() => setIsFullNameFocused(false)}
+                selectionColor="gray" // Set text cursor color to gray
               >
               </TextInput>
             
@@ -42,7 +43,9 @@ export default function SignUpScreen ({ navigation }) {
                 value={email}
                 onChangeText={setEmail}
                 onFocus={() => setIsEmailFocused(true)}
-                onBlur={() => setIsEmailFocused(false)}>
+                onBlur={() => setIsEmailFocused(false)}
+                selectionColor="gray" // Set text cursor color to gray
+                >
                   
                 </TextInput>
             
@@ -57,7 +60,8 @@ export default function SignUpScreen ({ navigation }) {
                 secureTextEntry
                 onFocus={() => setIsPasswordFocused(true)}
                 onBlur={() => setIsPasswordFocused(false)}
-              >
+                selectionColor="gray" // Set text cursor color to gray
+                > 
               </TextInput>
               <View style={signUpStyles.ButtonContainer}>
                   <TouchableOpacity style={signUpStyles.signUpButton}>

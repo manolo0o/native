@@ -43,6 +43,7 @@ const signUpStyles = StyleSheet.create({
       borderWidth: .2,
       borderColor: 'gray',
       backgroundColor: 'white',
+      fontFamily: "Montserrat_400Regular",
     },
     inputFocused: {
       borderColor: '#FE8000', // Change border color when focused

@@ -64,16 +64,25 @@ export default function WelcomeScreen({ navigation }) {
           </View>
 
           <View style={welcomeStyles.StartContainer}>
-            <TouchableOpacity style={welcomeStyles.startButton}>
+            
+            <TouchableOpacity 
+              style={welcomeStyles.startButton}
+              onPress={() => navigation.navigate('SignUp')}
+              >
               <Text style={welcomeStyles.startTextButton}>Start with email or phone</Text>
             </TouchableOpacity>
+            
             <Text style={welcomeStyles.startText}>
-              Already have an account?  <Text 
+              Already have an account?  
+              
+              <Text 
                 style={welcomeStyles.highlight}
                 onPress={() => navigation.navigate('SignIn')}
-                >Sign In
+              >
+                Sign In
               </Text>
-            </Text>  
+            </Text>
+
           </View>
 
         </View>

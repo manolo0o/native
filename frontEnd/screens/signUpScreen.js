@@ -4,6 +4,9 @@ import axios from 'axios';
 import { API_URL_NEW } from '@env'; 
 import signUpStyles from '../Styles/signUpStyles.js';
 
+//components
+import CustomAlert from '../components/customAlert.js';
+
 export default function SignUpScreen({ navigation }) {
   const [fullName, setFullName] = useState('');
   const [istFullNameFocused, setIsFullNameFocused] = useState(false);
@@ -11,6 +14,8 @@ export default function SignUpScreen({ navigation }) {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [password, setPassword] = useState('');
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleSignUp = async () => {
     try {

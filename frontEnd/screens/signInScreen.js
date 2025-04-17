@@ -5,11 +5,16 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL_NEW } from '@env';
 
+//components
+import CustomAlert from '../components/customAlert.js';
+
 export default function SignInScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -24,15 +29,12 @@ export default function SignInScreen({ navigation }) {
       await AsyncStorage.setItem('userToken', token);
       await AsyncStorage.setItem('userData', JSON.stringify(user));
 
-      Alert.alert('¡Bienvenido!', `Hola ${user.name}`, [
-        { text: 'OK', onPress: () => navigation.navigate('Home') }
-      ]);
+      setAlertMessage(`Hola ${user.name}`);
+      setAlertVisible(true);
     } catch (error) {
       console.error('❌ Error en login:', error.response?.data || error.message);
-      Alert.alert(
-        'Error',
-        error.response?.data?.message || 'Credenciales incorrectas'
-      );
+      setAlertMessage(error.response?.data?.message || 'Credenciales incorrectas');
+      setAlertVisible(true);
     }
   };
 
@@ -58,6 +60,7 @@ export default function SignInScreen({ navigation }) {
           onBlur={() => setIsEmailFocused(false)}
           autoCapitalize="none"
           keyboardType="email-address"
+          selectionColor="gray"
         />
 
         <Text style={signInStyles.inputReference}>Password</Text>
@@ -71,6 +74,7 @@ export default function SignInScreen({ navigation }) {
           secureTextEntry
           onFocus={() => setIsPasswordFocused(true)}
           onBlur={() => setIsPasswordFocused(false)}
+          selectionColor="gray"
         />
 
         <View style={signInStyles.ButtonContainer}>
@@ -91,6 +95,17 @@ export default function SignInScreen({ navigation }) {
           </Text>
         </View>
       </View>
+      <CustomAlert
+        visible={alertVisible}
+        message={alertMessage}
+        onClose={() => {
+          setAlertVisible(false);
+          if (alertMessage.startsWith('Hola')) {
+            navigation.navigate('Home');
+          }
+        }}
+      />
     </ImageBackground>
+    
   );
 }
